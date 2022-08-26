@@ -30,7 +30,7 @@ At the moment there's no intention to make it available through MELPA
 as it's unlikely it'd be accepted there for distribution due to the
 specificity this package has.
 
-** ~use-package~
+** Using ~use-package~
 
 Example installation with ~use-package~ using a local copy:
 
