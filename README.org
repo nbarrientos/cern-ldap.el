@@ -53,6 +53,7 @@ just a list for quick reference:
 - ~cern-ldap-user-lookup-full-name-key~
 - ~cern-ldap-user-displayed-attributes~
 - ~cern-ldap-user-group-membership-filter~
+- ~cern-ldap-user-sort-key~
 
 For more information just run ~M-x customize-group cern-ldap~ or read
 the documentation of each of the variables listed above..

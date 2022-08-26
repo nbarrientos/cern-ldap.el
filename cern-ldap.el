@@ -78,6 +78,11 @@ memberships."
   :group 'cern-ldap
   :type 'regex)
 
+(defcustom cern-ldap-user-sort-key "cernAccountType"
+  "LDAP field user entries will be sorted by."
+  :group 'cern-ldap
+  :type 'string)
+
 ;;;###autoload
 (defun cern-ldap-user-by-login-dwim (arg)
   "Look-up account by login in the active region or the word at point.
@@ -187,7 +192,7 @@ automatically lookup information about that username."
                        cern-ldap-user-displayed-attributes))
          (data (seq-sort-by
                 (lambda (e)
-                  (cadr (assoc "cernAccountType" e)))
+                  (cadr (assoc cern-ldap-user-sort-key e)))
                 #'string<
                 (ldap-search
                  filter
