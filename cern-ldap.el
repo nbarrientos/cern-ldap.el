@@ -97,6 +97,12 @@ This field must be part of `cern-ldap-user-displayed-attributes'"
   :group 'cern-ldap
   :type 'string)
 
+(defconst cern-ldap--user-base-dn "OU=Users,OU=Organic Units,DC=cern,DC=ch"
+  "The base DN when searching for users.")
+
+(defconst cern-ldap--group-base-dn "OU=e-groups,OU=Workgroups,DC=cern,DC=ch"
+  "The base DN when searching for groups.")
+
 ;;;###autoload
 (defun cern-ldap-user-by-login-dwim (arg)
   "Look-up account by login in the active region or the word at point.
@@ -213,7 +219,7 @@ automatically lookup information about that username."
           (list
            (append
             (assoc cern-ldap-server-url ldap-host-parameters-alist)
-            '(base "OU=Users,OU=Organic Units,DC=cern,DC=ch" auth simple scope subtree))))
+            `(base ,cern-ldap--user-base-dn auth simple scope subtree))))
          (attributes (unless arg
                        cern-ldap-user-displayed-attributes))
          (data (seq-sort-by
@@ -256,7 +262,7 @@ automatically lookup information about that username."
          (list
           (append
            (assoc cern-ldap-server-url ldap-host-parameters-alist)
-           '(base "OU=e-groups,OU=Workgroups,DC=cern,DC=ch" auth simple scope subtree))))
+           `(base ,cern-ldap--group-base-dn auth simple scope subtree))))
         (results nil))
     (dolist (member (car (ldap-search
                      (format "(&(objectClass=group)(CN=%s))" group)
