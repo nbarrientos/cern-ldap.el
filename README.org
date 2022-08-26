@@ -18,7 +18,12 @@ using Emacs.
 * Download and installation
 The source code is available in Sourcehut:
 
-- https://git.sr.ht/~nbarrientos/cern-ldap.el
+- Sourcehut :: https://git.sr.ht/~nbarrientos/cern-ldap.el
+- Github (mirror) :: https://github.com/nbarrientos/cern-ldap.el
+
+At the moment there's no intention to make it available through MELPA
+as it's unlikely it'd be accepted there for distribution due to the
+specificity this package has.
 
 ** ~use-package~
 
