@@ -1,0 +1,14 @@
+image: alpine/edge
+packages:
+  - git
+  - openssh
+secrets:
+  - b6a70af2-99a5-45ba-ab1f-84e4451b3977
+tasks:
+  - deploy_to_github: |
+      git clone --bare --mirror https://git.sr.ht/~nbarrientos/cern-ldap.el cern-ldap.el-bare
+      cd cern-ldap.el-bare
+      git branch -v
+      ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+      git remote add github git@github.com:nbarrientos/cern-ldap.el.git
+      git push --force --all --prune github
