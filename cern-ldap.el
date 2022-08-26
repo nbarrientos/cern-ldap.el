@@ -28,6 +28,8 @@
 
 ;;; Code:
 
+(require 'ldap)
+
 (defcustom cern-ldap-server-url "ldap://xldap.cern.ch:389"
   "URL pointing to the LDAP instance to query.
 
