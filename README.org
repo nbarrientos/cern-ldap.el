@@ -1,0 +1,5 @@
+#+title: cern-ldap.el: Collection of Emacs Lisp functions to interact with CERN's LDAP servers
+#+author: Nacho Barrientos
+#+email: nacho.barrientos@cern.ch
+
+To be written.
