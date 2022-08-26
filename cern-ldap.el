@@ -40,7 +40,7 @@ to change the value of this variable."
   :type 'string)
 
 (defcustom cern-ldap-user-lookup-login-key "sAMAccountName"
-  "Field in the user object data to look-up user accounts by login.
+  "Field to search in when looking up user accounts by login.
 
 The value of this variable will be used as search field at the
 time of querying LDAP when calling `cern-ldap-user-by-login'"
@@ -48,7 +48,7 @@ time of querying LDAP when calling `cern-ldap-user-by-login'"
   :type 'string)
 
 (defcustom cern-ldap-user-lookup-full-name-key "displayName"
-  "Field in the user object data to look-up user accounts by full name.
+  "Field to search in when looking up user accounts by full name.
 
 The value of this variable will be used as search field at the
 time of querying LDAP when calling `cern-ldap-user-by-full-name'"
@@ -59,9 +59,9 @@ time of querying LDAP when calling `cern-ldap-user-by-full-name'"
   "Define how the full name matching is performed when searching.
 
 Accepted values are the symbols: `relaxed' which means that the
-provided full name will be prefixed and postfixed by * and
-`strict' which searches for users with exactly the provided full
-name."
+provided full name will be prefixed and postfixed by * (allowing
+for instance to search by family name only) and `strict' which
+searches for users with exactly the provided full name."
   :group 'cern-ldap
   :type '(choice (const :tag "Relaxed" relaxed)
                  (const :tag "Strict" strict)))
@@ -74,18 +74,19 @@ name."
 Only this selection of attributes will be displayed when a set of
 results containing user accounts is displayed. However, take into
 account that some functions like `cern-ldap-user-by-full-name'
-and `cern-ldap-user-by-login' have means to ignore this subset."
+and `cern-ldap-user-by-login' have means to ignore this
+configuration."
   :group 'cern-ldap
   :type '(repeat string))
 
 (defcustom cern-ldap-user-group-membership-filter ".*"
   "Regular expression restricting the group membership to be shown.
 
-When skimmed results are displayed when looking up user accounts,
-this regular expression allows restricting as well what groups
-the user is member of are shown. This is useful if you don't want
-to clutter the result list with non-interesting group
-memberships."
+When skimmed results are displayed when looking up user
+accounts (which is the default), this regular expression allows
+restricting as well what groups the user is member of are
+shown. This is useful if you don't want to clutter the result
+list with non-interesting group memberships."
   :group 'cern-ldap
   :type 'regex)
 
@@ -137,7 +138,7 @@ control how the results are displayed/filtered."
 
 ;;;###autoload
 (defun cern-ldap-user-by-full-name (arg full-name)
-  "Look-up user account with full name *FULL-NAME* in LDAP.
+  "Look-up user account with full name FULL-NAME in LDAP.
 
 How the matching of the full name is performed depends on the
 value of the variable `cern-ldap-user-full-name-matching-type'.
@@ -195,8 +196,13 @@ automatically lookup information about that username."
 (defun cern-ldap--lookup-user (arg filter)
   "Lookup users in LDAP returning some attributes in a new buffer.
 
+The results will be delivered in a temporary read-only buffer
+named *LDAP user FILTER*.
+
 The users returned are the ones satisfying FILTER. With prefix
-argument, return all attributes, else return only a small selection.
+argument, return all attributes, else return only a small
+selection controlled by `cern-ldap-user-group-membership-filter'
+and `cern-ldap-user-displayed-attributes'.
 
 Once in the results buffer, C-<return> on a login name will
 automatically lookup information about that username."
