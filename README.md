@@ -1,3 +1,15 @@
+The aim of this package is to provide a set of functions to interact
+with CERN&rsquo;s LDAP servers, allowing to lookup users by login and full
+name and the membership of user groups. The output is normally
+displayed in read-only buffers. Below you can find a list of variables
+that can be customised and also the commands that this package
+provides. It&rsquo;s recommended though to read the documentation of each
+variable and function as this document typically contains only
+summaries and brief explanations.
+
+Even though it&rsquo;s obviously tailored to the CERN context and hence with
+a rather small audience, this package might also serve as inspiration
+for others learning how to talk to LDAP servers using Emacs.
 
 
 # License
@@ -15,10 +27,6 @@ However, the current maintainer (which is currently working for CERN)
 will be happy to discuss changes and give a helping hand but please
 note that developing `cern-ldap.el` is not part of his job.
 
-Even though it&rsquo;s obviously tailored to the CERN context, this package
-might also serve as inspiration for others learning how to talk to
-LDAP servers using Emacs.
-
 
 # Download and installation
 
@@ -32,7 +40,7 @@ as it&rsquo;s unlikely it&rsquo;d be accepted there for distribution due to the
 specificity this package has.
 
 
-## `use-package`
+## Using `use-package`
 
 Example installation with `use-package` using a local copy:
 
