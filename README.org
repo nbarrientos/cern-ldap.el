@@ -40,6 +40,10 @@ Example installation with ~use-package~:
 Don't forget to clone the source code into the load path specified
 above.
 
+* Contributing
+
+Send patches and/or comments to the [[https://lists.sr.ht/~nbarrientos/cern-ldap.el][mailing list]].
+
 * Customisation options
 The package allows the user to customise the behaviour of code. Here's
 just a list for quick reference:
