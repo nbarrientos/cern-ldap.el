@@ -60,6 +60,7 @@ quick reference:
 -   `cern-ldap-server-url`
 -   `cern-ldap-user-lookup-login-key`
 -   `cern-ldap-user-lookup-full-name-key`
+-   `cern-ldap-user-full-name-matching-type`
 -   `cern-ldap-user-displayed-attributes`
 -   `cern-ldap-user-group-membership-filter`
 -   `cern-ldap-user-sort-key`
