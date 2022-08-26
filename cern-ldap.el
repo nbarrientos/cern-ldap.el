@@ -79,7 +79,9 @@ memberships."
   :type 'regex)
 
 (defcustom cern-ldap-user-sort-key "cernAccountType"
-  "LDAP field user entries will be sorted by."
+  "LDAP field user entries will be sorted by.
+
+This field must be part of `cern-ldap-user-displayed-attributes'"
   :group 'cern-ldap
   :type 'string)
 
