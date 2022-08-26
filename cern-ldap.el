@@ -55,6 +55,17 @@ time of querying LDAP when calling `cern-ldap-user-by-full-name'"
   :group 'cern-ldap
   :type 'string)
 
+(defcustom cern-ldap-user-full-name-matching-type 'relaxed
+  "Define how the full name matching is performed when searching.
+
+Accepted values are the symbols: `relaxed' which means that the
+provided full name will be prefixed and postfixed by * and
+`strict' which searches for users with exactly the provided full
+name."
+  :group 'cern-ldap
+  :type '(choice (const :tag "Relaxed" relaxed)
+                 (const :tag "Strict" strict)))
+
 (defcustom cern-ldap-user-displayed-attributes
   '("memberOf" "manager" "department" "physicalDeliveryOfficeName"
     "name" "displayName" "cernExternalMail" "seeAlso" "cernAccountType")
@@ -128,12 +139,19 @@ control how the results are displayed/filtered."
 (defun cern-ldap-user-by-full-name (arg full-name)
   "Look-up user account with full name *FULL-NAME* in LDAP.
 
+How the matching of the full name is performed depends on the
+value of the variable `cern-ldap-user-full-name-matching-type'.
+
   See `cern-ldap-user-by-full-name-dwim' for instructions on how to
 control how the results are displayed/filtered."
   (interactive "P\nsFull name: ")
   (cern-ldap--lookup-user
    arg
-   (concat "displayName=*" full-name "*")))
+   (cond
+    ((eq cern-ldap-user-full-name-matching-type 'relaxed)
+     (concat cern-ldap-user-lookup-full-name-key "=*" full-name "*"))
+    ((eq cern-ldap-user-full-name-matching-type 'strict)
+     (concat cern-ldap-user-lookup-full-name-key "=" full-name)))))
 
 ;;;###autoload
 (defun cern-ldap-group-dwim (arg)
