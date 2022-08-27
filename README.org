@@ -54,7 +54,7 @@ Example installation with ~use-package~ using a local copy:
 #+end_src
 
 Don't forget to clone the source code into the load path specified
-above.
+above (or any other of your choice).
 
 * Contributing
 
