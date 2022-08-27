@@ -92,7 +92,8 @@ These commands will always prompt for user input using the minibuffer.
     argument, return more information.
 -   **`cern-ldap-user-by-full-name`:** Lookup a user (or several) by full
     name. The search query is enclosed in `*` by default, making the
-    search query more greedy.
+    search query more greedy (see
+    `cern-ldap-user-full-name-matching-type`).
 -   **`cern-ldap-group`:** Lookup the members of a group by name. With
     prefix argument, do it non-recursive.
 
