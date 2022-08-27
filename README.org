@@ -39,7 +39,8 @@ to Github for convenience:
 
 It'd be cool to make the package available through MELPA but, given
 the very scoped audience it has, I imagine it'd be unlikely to be
-accepted for distribution. I'll try at some point, though.
+accepted for distribution. +I'll try at some point, though+ (see
+[[https://github.com/melpa/melpa/pull/8181][melpa#8181]]).
 
 ** Using ~use-package~
 
