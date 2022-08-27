@@ -176,6 +176,7 @@ See `cern-ldap-group' for the meaning of the prefix argument ARG."
          (group (if (use-region-p)
                     (buffer-substring-no-properties (region-beginning) (region-end))
                   (word-at-point t))))
+    (ignore --dummy)
     (setq superword-mode previous-superword-mode)
     (when group
       (cern-ldap-group arg group))))
