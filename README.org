@@ -17,7 +17,7 @@ Even though it's obviously tailored to the CERN context and hence with
 a rather small audience, this package might also serve as inspiration
 for others learning how to talk to LDAP servers using Emacs.
 
-* License
+* Licence
 See ~COPYING~.
 
 * Disclaimer
