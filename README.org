@@ -1,4 +1,4 @@
-#+title: cern-ldap.el: Collection of unctions to interact with CERN's LDAP servers
+#+title: Collection of functions to interact with CERN's LDAP servers
 #+author: Nacho Barrientos
 #+email: nacho.barrientos@cern.ch
 #+language: en
