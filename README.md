@@ -1,3 +1,5 @@
+[![img](https://melpa.org/packages/cern-ldap-badge.svg "MELPA")](https://melpa.org/#/cern-ldap)
+
 The aim of this package is to provide a set of functions to interact
 with CERN&rsquo;s LDAP servers, allowing to lookup users by login and full
 name and the membership of user groups. The output is normally
@@ -37,13 +39,19 @@ to Github for convenience:
 -   **Sourcehut:** <https://git.sr.ht/~nbarrientos/cern-ldap.el>
 -   **Github (mirror):** <https://github.com/nbarrientos/cern-ldap.el>
 
-It&rsquo;d be cool to make the package available through MELPA but, given
-the very scoped audience it has, I imagine it&rsquo;d be unlikely to be
-accepted for distribution. <del>I&rsquo;ll try at some point, though</del> (see
-[melpa#8181](https://github.com/melpa/melpa/pull/8181)).
+
+## Installation from MELPA using `use-package`
+
+The latest version (current `master`) of this software can be
+installed directly from [MELPA](https://melpa.org/#/cern-ldap).
+
+    (use-package cern-ldap
+    :ensure t
+    :custom
+    (cern-ldap-server-url "ldap://localhost:1389"))
 
 
-## Using `use-package`
+## Manual installation using `use-package`
 
 Example installation with `use-package` using a local copy:
 
