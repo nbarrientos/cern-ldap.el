@@ -19,25 +19,27 @@ See `COPYING`.
 
 # Disclaimer
 
-This Emacs package has no affiliation whatsoever with CERN or the CERN
-IT department and it&rsquo;s hence not maintained as part of any CERN
+This Emacs package has no affiliation whatsoever with [CERN](https://home.cern) or the [CERN
+IT department](https://information-technology.web.cern.ch/) and it&rsquo;s hence not maintained as part of any CERN
 project.
 
-However, the current maintainer (which is currently working for CERN)
-will be happy to discuss changes and give a helping hand but please
-note that developing `cern-ldap.el` is not part of his job.
+However, the [current maintainer](https://cern.ch/nacho) (who turns out to be working for CERN
+at the moment) will be happy to discuss changes and give a helping
+hand but please note that developing `cern-ldap.el` is not part of his
+paid job.
 
 
 # Download and installation
 
-The source code is available in Sourcehut:
+The source code is available in Sourcehut and automatically mirrored
+to Github for convenience:
 
 -   **Sourcehut:** <https://git.sr.ht/~nbarrientos/cern-ldap.el>
 -   **Github (mirror):** <https://github.com/nbarrientos/cern-ldap.el>
 
-At the moment there&rsquo;s no intention to make it available through MELPA
-as it&rsquo;s unlikely it&rsquo;d be accepted there for distribution due to the
-specificity this package has.
+It&rsquo;d be cool to make the package available through MELPA but, given
+the very scoped audience it has, I imagine it&rsquo;d be unlikely to be
+accepted for distribution. I&rsquo;ll try at some point, though.
 
 
 ## Using `use-package`
