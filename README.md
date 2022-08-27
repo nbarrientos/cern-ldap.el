@@ -147,6 +147,6 @@ for example:
     moment, it&rsquo;s not possible to discover the membership of groups for
     which the server decides to split the results. The CERN LDAP servers
     start enforcing pagination when there are more than 1500 results
-    returned. For the time being groups this big will be displayed as
+    returned. For the time being groups this big will be signalled as
     &ldquo;empty&rdquo;.
 
