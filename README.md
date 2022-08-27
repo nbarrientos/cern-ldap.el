@@ -143,11 +143,10 @@ for example:
 
 # Limitations
 
--   Support for paginated LDAP results is limited in Emacs so, at the
-
-moment, it&rsquo;s not possible to discover the membership of groups for
-which the server decides to split the results. The CERN LDAP servers
-start enforcing pagination when there are more than 1500 results
-returned. For the time being groups this big will be displayed as
-&ldquo;empty&rdquo;.
+1.  Support for paginated LDAP results is limited in Emacs so, at the
+    moment, it&rsquo;s not possible to discover the membership of groups for
+    which the server decides to split the results. The CERN LDAP servers
+    start enforcing pagination when there are more than 1500 results
+    returned. For the time being groups this big will be displayed as
+    &ldquo;empty&rdquo;.
 
