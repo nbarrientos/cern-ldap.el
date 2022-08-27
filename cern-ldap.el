@@ -180,11 +180,10 @@ how the results are displayed/filtered using ARG."
 See `cern-ldap-group' for the meaning of the prefix argument ARG."
   (interactive "P")
   (let* ((previous-superword-mode superword-mode)
-         (--dummy (superword-mode 1))
+         (_dummy (superword-mode 1))
          (group (if (use-region-p)
                     (buffer-substring-no-properties (region-beginning) (region-end))
                   (word-at-point t))))
-    (ignore --dummy)
     (setq superword-mode previous-superword-mode)
     (when group
       (cern-ldap-group arg group))))
