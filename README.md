@@ -12,7 +12,7 @@ a rather small audience, this package might also serve as inspiration
 for others learning how to talk to LDAP servers using Emacs.
 
 
-# License
+# Licence
 
 See `COPYING`.
 
@@ -53,7 +53,7 @@ Example installation with `use-package` using a local copy:
     (cern-ldap-server-url "ldap://localhost:1389"))
 
 Don&rsquo;t forget to clone the source code into the load path specified
-above.
+above (or any other of your choice).
 
 
 # Contributing
