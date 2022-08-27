@@ -29,6 +29,7 @@
 
 ;;; Code:
 
+(require 'subword)
 (require 'ldap)
 
 (defcustom cern-ldap-server-url "ldap://xldap.cern.ch:389"
