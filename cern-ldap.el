@@ -141,8 +141,8 @@ See `cern-ldap-user-by-login-dwim' for instructions on how to control
 how the results are displayed/filtered using ARG."
   (interactive "P")
   (and-let* ((full-name (when (use-region-p)
-                             (buffer-substring-no-properties
-                              (region-beginning) (region-end)))))
+                          (buffer-substring-no-properties
+                           (region-beginning) (region-end)))))
     (cern-ldap-user-by-full-name arg full-name)))
 
 ;;;###autoload
@@ -286,13 +286,13 @@ automatically lookup information about that username."
   (let ((ldap-host-parameters-alist
          (list
           `(,cern-ldap-server-url
-             base ,cern-ldap--group-base-dn
-             auth simple scope subtree)))
+            base ,cern-ldap--group-base-dn
+            auth simple scope subtree)))
         (results nil))
     (dolist (member (car (ldap-search
-                     (format "(&(objectClass=group)(CN=%s))" group)
-                     cern-ldap-server-url
-                     '("member"))))
+                          (format "(&(objectClass=group)(CN=%s))" group)
+                          cern-ldap-server-url
+                          '("member"))))
       (and-let* ((dn (car (cdr member)))
                  (match (string-match "^CN=\\(.+?\\),OU=\\(.+?\\),OU=\\(.+?\\),DC=cern,DC=ch" dn))
                  (cn (match-string 1 dn))
