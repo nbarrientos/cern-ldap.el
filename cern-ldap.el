@@ -141,7 +141,7 @@ control how the results are displayed/filtered using ARG."
 (defun cern-ldap-user-by-login (arg login)
   "Look-up user account with username LOGIN in LDAP.
 
-  See `cern-ldap-user-by-full-name-dwim' for instructions on how to
+See `cern-ldap-user-by-full-name-dwim' for instructions on how to
 control how the results are displayed/filtered using ARG."
   (interactive "P\nsLogin: ")
   (cern-ldap--lookup-user
@@ -155,7 +155,7 @@ control how the results are displayed/filtered using ARG."
 How the matching of the full name is performed depends on the
 value of the variable `cern-ldap-user-full-name-matching-type'.
 
-  See `cern-ldap-user-by-full-name-dwim' for instructions on how to
+See `cern-ldap-user-by-full-name-dwim' for instructions on how to
 control how the results are displayed/filtered using ARG."
   (interactive "P\nsFull name: ")
   (cern-ldap--lookup-user
