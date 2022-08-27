@@ -178,6 +178,10 @@ See `cern-ldap-group' for the meaning of the prefix argument."
 (defun cern-ldap-group (arg group)
   "Print in buffer *LDAP group GROUP* the members of GROUP.
 
+By default the resulting list will be composed exclusively by
+user accounts. However, with prefix argument to disable
+recursion, it will be a mix of user accounts and other groups.
+
 With any prefix argument, make it not recursive.
 
 Once in the results buffer, C-<return> on a login name will
