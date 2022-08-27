@@ -116,7 +116,13 @@ Please refer to the built-in help of each function for further
 information.
 
 
-# Combining with transient
+# Keybindings
+
+No keybindings, keymaps or global minor modes are provided. It&rsquo;s up to
+the user to configure them to their liking.
+
+
+## Combining with transient
 
 It might be a good idea to pack these commands in a [transient](https://github.com/magit/transient) menu,
 for example:
