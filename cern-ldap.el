@@ -41,6 +41,14 @@ to change the value of this variable."
   :group 'cern-ldap
   :type 'string)
 
+(defcustom cern-ldap-buffer-name-format "*CERN LDAP %t %l*"
+  "Format for the buffer names that display results.
+
+%t represents the type of lookup, namely \"user\" or \"group\"
+and %l the corresponding search string."
+  :group 'cern-ldap
+  :type 'string)
+
 (defcustom cern-ldap-user-lookup-login-key "sAMAccountName"
   "Field to search in when looking up user accounts by login.
 
@@ -183,18 +191,23 @@ See `cern-ldap-group' for the meaning of the prefix argument ARG."
 
 ;;;###autoload
 (defun cern-ldap-group (arg group)
-  "Print in buffer *LDAP group GROUP* the members of GROUP.
+  "Print in a temporary buffer the members of GROUP.
 
 By default the resulting list will be composed exclusively by
 user accounts.  However, with prefix argument to disable
 recursion, it will be a mix of user accounts and other groups.
+
+The buffer name is controlled by `cern-ldap-buffer-name-format'.
 
 With any prefix argument ARG, make it not recursive.
 
 Once in the results buffer, C-<return> on a login name will
 automatically lookup information about that username."
   (interactive "P\nsGroup: ")
-  (let ((buffer-n (format "*LDAP group %s*" group))
+  (let ((buffer-n (format-spec
+                   cern-ldap-buffer-name-format
+                   `((?t . "group")
+                     (?l . ,group))))
         (members (cern-ldap--expand-group group (not arg))))
     (if members
         (with-temp-buffer-window
@@ -214,7 +227,7 @@ automatically lookup information about that username."
   "Lookup users in LDAP returning some attributes in a new buffer.
 
 The results will be delivered in a temporary read-only buffer
-named *LDAP user FILTER*.
+named using `cern-ldap-buffer-name-format'.
 
 The users returned are the ones satisfying FILTER.  With prefix
 argument ARG, return all attributes, else return only a small
@@ -223,9 +236,10 @@ selection controlled by `cern-ldap-user-group-membership-filter' and
 
 Once in the results buffer, C-<return> on a login name will
 automatically lookup information about that username."
-  (let* ((buffer-n (format
-                    "*LDAP user %s*"
-                    (car (last (split-string filter "=")))))
+  (let* ((buffer-n (format-spec
+                    cern-ldap-buffer-name-format
+                    `((?t . "user")
+                      (?l . ,(car (last (split-string filter "=")))))))
          (ldap-host-parameters-alist
           (list
            `(,cern-ldap-server-url

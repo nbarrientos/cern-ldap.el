@@ -66,6 +66,7 @@ several ways. Here's just a list of the customisation variables for
 quick reference:
 
 - ~cern-ldap-server-url~
+- ~cern-ldap-buffer-name-format~
 - ~cern-ldap-user-lookup-login-key~
 - ~cern-ldap-user-lookup-full-name-key~
 - ~cern-ldap-user-full-name-matching-type~
