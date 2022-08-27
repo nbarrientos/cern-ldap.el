@@ -23,7 +23,7 @@
 
 ;; This package provides some functions allowing to look-up in CERN's
 ;; LDAP server user accounts (searching by login and full name) and
-;; the contents of user groups (also known as e-groups). The results
+;; the contents of user groups (also known as e-groups).  The results
 ;; are normally displayed in dedicated buffers.
 
 ;;; Code:
@@ -34,7 +34,7 @@
   "URL pointing to the LDAP instance to query.
 
 Proven you're in the CERN network the default value should be
-good enough. If you're tunnelling the connection you might have
+good enough.  If you're tunnelling the connection you might have
 to change the value of this variable."
   :group 'cern-ldap
   :type 'string)
@@ -72,7 +72,7 @@ searches for users with exactly the provided full name."
   "List of attributes to display when printing discovered users.
 
 Only this selection of attributes will be displayed when a set of
-results containing user accounts is displayed. However, take into
+results containing user accounts is displayed.  However, take into
 account that some functions like `cern-ldap-user-by-full-name'
 and `cern-ldap-user-by-login' have means to ignore this
 configuration."
@@ -85,7 +85,7 @@ configuration."
 When skimmed results are displayed when looking up user
 accounts (which is the default), this regular expression allows
 restricting as well what groups the user is member of are
-shown. This is useful if you don't want to clutter the result
+shown.  This is useful if you don't want to clutter the result
 list with non-interesting group memberships."
   :group 'cern-ldap
   :type 'regex)
@@ -110,11 +110,12 @@ This field must be part of `cern-ldap-user-displayed-attributes'"
 (defun cern-ldap-user-by-login-dwim (arg)
   "Look-up account by login in the active region or the word at point.
 
-Without prefix argument, the number of fields per result user entry
-displayed is limited to the selection configured in
-`cern-ldap-user-displayed-attributes' and, if \"memberOf\" is part of
-that list, the groups the user is member of is filtered by the regular
-expression defined in `cern-ldap-user-group-membership-filter'."
+Without prefix argument ARG, the number of fields per result user
+entry displayed is limited to the selection configured in
+`cern-ldap-user-displayed-attributes' and, if \"memberOf\" is
+part of that list, the groups the user is member of is filtered
+by the regular expression defined in
+`cern-ldap-user-group-membership-filter'."
   (interactive "P")
   (and-let* ((login (if (use-region-p)
                         (buffer-substring-no-properties
@@ -127,7 +128,7 @@ expression defined in `cern-ldap-user-group-membership-filter'."
   "Look-up account by full name in the active region.
 
 See `cern-ldap-user-by-full-name-dwim' for instructions on how to
-control how the results are displayed/filtered."
+control how the results are displayed/filtered using ARG."
   (interactive "P")
   (and-let* ((full-name (when (use-region-p)
                              (buffer-substring-no-properties
@@ -139,7 +140,7 @@ control how the results are displayed/filtered."
   "Look-up user account with username LOGIN in LDAP.
 
   See `cern-ldap-user-by-full-name-dwim' for instructions on how to
-control how the results are displayed/filtered."
+control how the results are displayed/filtered using ARG."
   (interactive "P\nsLogin: ")
   (cern-ldap--lookup-user
    arg
@@ -153,7 +154,7 @@ How the matching of the full name is performed depends on the
 value of the variable `cern-ldap-user-full-name-matching-type'.
 
   See `cern-ldap-user-by-full-name-dwim' for instructions on how to
-control how the results are displayed/filtered."
+control how the results are displayed/filtered using ARG."
   (interactive "P\nsFull name: ")
   (cern-ldap--lookup-user
    arg
@@ -166,7 +167,7 @@ control how the results are displayed/filtered."
 ;;;###autoload
 (defun cern-ldap-group-dwim (arg)
   "Expand the group which is in the active region or the word at point.
-See `cern-ldap-group' for the meaning of the prefix argument."
+See `cern-ldap-group' for the meaning of the prefix argument ARG."
   (interactive "P")
   (let* ((previous-superword-mode superword-mode)
          (--dummy (superword-mode 1))
@@ -182,10 +183,10 @@ See `cern-ldap-group' for the meaning of the prefix argument."
   "Print in buffer *LDAP group GROUP* the members of GROUP.
 
 By default the resulting list will be composed exclusively by
-user accounts. However, with prefix argument to disable
+user accounts.  However, with prefix argument to disable
 recursion, it will be a mix of user accounts and other groups.
 
-With any prefix argument, make it not recursive.
+With any prefix argument ARG, make it not recursive.
 
 Once in the results buffer, C-<return> on a login name will
 automatically lookup information about that username."
@@ -212,10 +213,10 @@ automatically lookup information about that username."
 The results will be delivered in a temporary read-only buffer
 named *LDAP user FILTER*.
 
-The users returned are the ones satisfying FILTER. With prefix
-argument, return all attributes, else return only a small
-selection controlled by `cern-ldap-user-group-membership-filter'
-and `cern-ldap-user-displayed-attributes'.
+The users returned are the ones satisfying FILTER.  With prefix
+argument ARG, return all attributes, else return only a small
+selection controlled by `cern-ldap-user-group-membership-filter' and
+`cern-ldap-user-displayed-attributes'.
 
 Once in the results buffer, C-<return> on a login name will
 automatically lookup information about that username."
