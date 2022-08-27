@@ -29,8 +29,10 @@
 
 ;;; Code:
 
-(require 'subword)
 (require 'ldap)
+(require 'subr-x)
+(require 'subword)
+(require 'thingatpt)
 
 (defcustom cern-ldap-server-url "ldap://xldap.cern.ch:389"
   "URL pointing to the LDAP instance to query.
