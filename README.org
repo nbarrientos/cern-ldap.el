@@ -2,7 +2,7 @@
 #+author: Nacho Barrientos
 #+email: nacho.barrientos@cern.ch
 #+language: en
-#+options: ':t toc:nil author:t email:t num:t
+#+options: ':t toc:nil author:t email:t title:t
 
 The aim of this package is to provide a set of functions to interact
 with CERN's LDAP servers, allowing to lookup users by login and full
