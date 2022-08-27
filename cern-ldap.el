@@ -5,6 +5,7 @@
 ;; Author: Nacho Barrientos <nacho.barrientos@cern.ch>
 ;; Keywords: tools, convenience
 ;; URL: https://git.sr.ht/~nbarrientos/cern-ldap.el
+;; Package-Requires: ((emacs "27.1"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -288,7 +289,7 @@ automatically lookup information about that username."
               ((string= "users" (downcase ou-1))
                (push cn results))
               ((and
-                (length= ou-1 1)
+                (= (length ou-1) 1)
                 (string= "externals" (downcase ou-2)))
                nil)
               (t
