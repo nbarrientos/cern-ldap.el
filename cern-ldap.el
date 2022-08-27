@@ -221,9 +221,9 @@ automatically lookup information about that username."
                     (car (last (split-string filter "=")))))
          (ldap-host-parameters-alist
           (list
-           (append
-            (assoc cern-ldap-server-url ldap-host-parameters-alist)
-            `(base ,cern-ldap--user-base-dn auth simple scope subtree))))
+           `(,cern-ldap-server-url
+             base ,cern-ldap--user-base-dn
+             auth simple scope subtree)))
          (attributes (unless arg
                        cern-ldap-user-displayed-attributes))
          (data (seq-sort-by
@@ -264,9 +264,9 @@ automatically lookup information about that username."
   "Return (recursively if RECURSE) the members of GROUP."
   (let ((ldap-host-parameters-alist
          (list
-          (append
-           (assoc cern-ldap-server-url ldap-host-parameters-alist)
-           `(base ,cern-ldap--group-base-dn auth simple scope subtree))))
+          `(,cern-ldap-server-url
+             base ,cern-ldap--group-base-dn
+             auth simple scope subtree)))
         (results nil))
     (dolist (member (car (ldap-search
                      (format "(&(objectClass=group)(CN=%s))" group)
