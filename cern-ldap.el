@@ -93,6 +93,9 @@ list with non-interesting group memberships."
 (defcustom cern-ldap-user-sort-key "cernAccountType"
   "LDAP field user entries will be sorted by.
 
+By default results are sorted by account type, aiming to have
+primary accounts listed first.
+
 This field must be part of `cern-ldap-user-displayed-attributes'"
   :group 'cern-ldap
   :type 'string)
