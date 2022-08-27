@@ -30,7 +30,9 @@
 
 ;;; Code:
 
+(require 'format-spec)
 (require 'ldap)
+(require 'seq)
 (require 'subr-x)
 (require 'subword)
 (require 'thingatpt)
