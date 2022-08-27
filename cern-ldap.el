@@ -195,7 +195,7 @@ automatically lookup information about that username."
     (if members
         (with-temp-buffer-window
             buffer-n
-            #'temp-buffer-show-function
+            #'display-buffer-reuse-window
             nil
           (dolist (member members)
             (princ (format "%s\n" member)))
@@ -240,7 +240,7 @@ automatically lookup information about that username."
     (if data
         (with-temp-buffer-window
             buffer-n
-            #'temp-buffer-show-function
+            #'display-buffer-reuse-window
             nil
           (and (< 1 (length data))
                (message "%d results found" (length data)))
