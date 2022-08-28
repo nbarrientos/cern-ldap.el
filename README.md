@@ -48,7 +48,8 @@ installed directly from [MELPA](https://melpa.org/#/cern-ldap).
     (use-package cern-ldap
     :ensure t
     :custom
-    (cern-ldap-server-url "ldap://localhost:1389"))
+    (cern-ldap-buffer-name-format "*LDAP (%t) %l*")
+    (cern-ldap-user-full-name-matching-type 'strict))
 
 
 ## Manual installation using `use-package`
