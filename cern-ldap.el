@@ -198,12 +198,10 @@ See `cern-ldap-group' for the meaning of the prefix argument ARG."
   "Print in a temporary buffer the members of GROUP.
 
 By default the resulting list will be composed exclusively by
-user accounts.  However, with prefix argument to disable
+user accounts.  However, with prefix argument ARG to disable
 recursion, it will be a mix of user accounts and other groups.
 
 The buffer name is controlled by `cern-ldap-buffer-name-format'.
-
-With any prefix argument ARG, make it not recursive.
 
 Once in the results buffer, C-<return> on a login name will
 automatically lookup information about that username."
