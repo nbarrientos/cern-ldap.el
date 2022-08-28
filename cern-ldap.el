@@ -281,12 +281,16 @@ automatically lookup information about that username."
       (user-error "No user accounts found"))))
 
 (defun cern-ldap--expand-group (group &optional recurse)
-  "Return (recursively if RECURSE) the members of GROUP."
-  (let ((results nil))
-    (dolist (member (car (cern-ldap--query
-                          (format "(&(objectClass=group)(CN=%s))" group)
-                          '("member")
-                          cern-ldap--group-base-dn)))
+  "Return the members of GROUP.
+
+If RECURSE make the expansion recursive (in other words, groups
+inside groups are expanded)."
+  (let ((members (car (cern-ldap--query
+                       (format "(&(objectClass=group)(CN=%s))" group)
+                       '("member")
+                       cern-ldap--group-base-dn)))
+        (results nil))
+    (dolist (member members)
       (and-let* ((dn (car (cdr member)))
                  (match (string-match "^CN=\\(.+?\\),OU=\\(.+?\\),OU=\\(.+?\\),DC=cern,DC=ch" dn))
                  (cn (match-string 1 dn))
