@@ -40,10 +40,12 @@ to Github for convenience:
 - Sourcehut :: https://git.sr.ht/~nbarrientos/cern-ldap.el
 - Github (mirror) :: https://github.com/nbarrientos/cern-ldap.el
 
-** Installation from MELPA using ~use-package~
+** With ~use-package~
+*** Installation from MELPA
 
 The latest version (current ~master~) of this software can be
-installed directly from [[https://melpa.org/#/cern-ldap][MELPA]].
+installed directly from [[https://melpa.org/#/cern-ldap][MELPA]]. The following snippet assumes that
+MELPA has already been configured and initialised ([[https://melpa.org/#/getting-started][instructions]]).
 
 #+begin_src emacs-lisp
   (use-package cern-ldap
@@ -53,7 +55,7 @@ installed directly from [[https://melpa.org/#/cern-ldap][MELPA]].
   (cern-ldap-user-full-name-matching-type 'strict))
 #+end_src
 
-** Manual installation using ~use-package~
+*** Manual installation
 
 Example installation with ~use-package~ using a local copy:
 
