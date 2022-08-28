@@ -244,21 +244,16 @@ automatically lookup information about that username."
                     cern-ldap-buffer-name-format
                     `((?t . "user")
                       (?l . ,(car (last (split-string filter "=")))))))
-         (ldap-host-parameters-alist
-          (list
-           `(,cern-ldap-server-url
-             base ,cern-ldap--user-base-dn
-             auth simple scope subtree)))
          (attributes (unless arg
                        cern-ldap-user-displayed-attributes))
          (data (seq-sort-by
                 (lambda (e)
                   (cadr (assoc cern-ldap-user-sort-key e)))
                 #'string<
-                (ldap-search
+                (cern-ldap--query
                  filter
-                 cern-ldap-server-url
-                 attributes))))
+                 attributes
+                 cern-ldap--user-base-dn))))
     (if data
         (with-temp-buffer-window
             buffer-n
@@ -287,16 +282,11 @@ automatically lookup information about that username."
 
 (defun cern-ldap--expand-group (group &optional recurse)
   "Return (recursively if RECURSE) the members of GROUP."
-  (let ((ldap-host-parameters-alist
-         (list
-          `(,cern-ldap-server-url
-            base ,cern-ldap--group-base-dn
-            auth simple scope subtree)))
-        (results nil))
-    (dolist (member (car (ldap-search
+  (let ((results nil))
+    (dolist (member (car (cern-ldap--query
                           (format "(&(objectClass=group)(CN=%s))" group)
-                          cern-ldap-server-url
-                          '("member"))))
+                          '("member")
+                          cern-ldap--group-base-dn)))
       (and-let* ((dn (car (cdr member)))
                  (match (string-match "^CN=\\(.+?\\),OU=\\(.+?\\),OU=\\(.+?\\),DC=cern,DC=ch" dn))
                  (cn (match-string 1 dn))
@@ -315,6 +305,21 @@ automatically lookup information about that username."
               (t
                (push dn results)))))
     (delete-dups results)))
+
+(defun cern-ldap--query (filter attributes basedn)
+  "Perform an LDAP search in CERN LDAP servers.
+
+Using FILTER as filter, retrieve only ATTRIBUTES using BASEDN as
+base search."
+  (let ((ldap-host-parameters-alist
+         (list
+          `(,cern-ldap-server-url
+            base ,basedn
+            auth simple scope subtree))))
+    (ldap-search
+     filter
+     cern-ldap-server-url
+     attributes)))
 
 (provide 'cern-ldap)
 ;;; cern-ldap.el ends here
