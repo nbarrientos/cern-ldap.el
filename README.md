@@ -39,7 +39,7 @@ Firstly, configure MELPA ([upstream instructions](https://melpa.org/#/getting-st
 ## With `use-package`
 
 
-### Installation from MELPA
+### From MELPA
 
 The latest version (current `master`) of this software can be installed directly from [MELPA](https://melpa.org/#/cern-ldap). The following snippet assumes that MELPA has already been configured and initialised ([instructions](https://melpa.org/#/getting-started)).
 
@@ -52,7 +52,7 @@ The latest version (current `master`) of this software can be installed directly
 ```
 
 
-### Manual installation
+### From sources
 
 Example installation with `use-package` using a local copy:
 

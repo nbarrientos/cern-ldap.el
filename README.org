@@ -52,7 +52,7 @@ local package list and install ~cern-ldap~.
 #+end_example
 
 ** With ~use-package~
-*** Installation from MELPA
+*** From MELPA
 
 The latest version (current ~master~) of this software can be
 installed directly from [[https://melpa.org/#/cern-ldap][MELPA]]. The following snippet assumes that
@@ -66,7 +66,7 @@ MELPA has already been configured and initialised ([[https://melpa.org/#/getting
     (cern-ldap-user-full-name-matching-type 'strict))
 #+end_src
 
-*** Manual installation
+*** From sources
 
 Example installation with ~use-package~ using a local copy:
 
