@@ -34,10 +34,10 @@ The latest version (current `master`) of this software can be installed directly
 
 ```emacs-lisp
 (use-package cern-ldap
-:ensure t
-:custom
-(cern-ldap-buffer-name-format "*LDAP (%t) %l*")
-(cern-ldap-user-full-name-matching-type 'strict))
+  :ensure t
+  :custom
+  (cern-ldap-buffer-name-format "*LDAP (%t) %l*")
+  (cern-ldap-user-full-name-matching-type 'strict))
 ```
 
 
@@ -47,10 +47,10 @@ Example installation with `use-package` using a local copy:
 
 ```emacs-lisp
 (use-package cern-ldap
-:ensure nil
-:load-path "~/.emacs.d/local-packages/cern-ldap.el"
-:custom
-(cern-ldap-server-url "ldap://localhost:1389"))
+  :ensure nil
+  :load-path "~/.emacs.d/local-packages/cern-ldap.el"
+  :custom
+  (cern-ldap-server-url "ldap://localhost:1389"))
 ```
 
 Don&rsquo;t forget to clone the source code into the load path specified above (or any other of your choice).
