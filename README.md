@@ -30,7 +30,7 @@ The source code is available in Sourcehut and automatically mirrored to Github f
 
 ### From MELPA
 
-Firstly, configure MELPA ([upstream instructions](https://melpa.org/#/getting-started)). Then, refresh the local package list and install `cern-ldap`.
+The latest version (current `master`) of this software can be installed directly from [MELPA](https://melpa.org/#/cern-ldap). Firstly, configure MELPA ([upstream instructions](https://melpa.org/#/getting-started)). Then, refresh the local package list and install `cern-ldap`.
 
     M-x package-refresh-contents RET
     M-x package-install RET cern-ldap RET
@@ -41,7 +41,7 @@ Firstly, configure MELPA ([upstream instructions](https://melpa.org/#/getting-st
 
 ### From MELPA
 
-The latest version (current `master`) of this software can be installed directly from [MELPA](https://melpa.org/#/cern-ldap). The following snippet assumes that MELPA has already been configured and initialised ([instructions](https://melpa.org/#/getting-started)).
+See above for instructions on how to setup MELPA first.
 
 ```emacs-lisp
 (use-package cern-ldap

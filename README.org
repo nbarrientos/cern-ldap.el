@@ -43,8 +43,10 @@ to Github for convenience:
 ** Manual installation
 *** From MELPA
 
-Firstly, configure MELPA ([[https://melpa.org/#/getting-started][upstream instructions]]). Then, refresh the
-local package list and install ~cern-ldap~.
+The latest version (current ~master~) of this software can be
+installed directly from [[https://melpa.org/#/cern-ldap][MELPA]]. Firstly, configure MELPA ([[https://melpa.org/#/getting-started][upstream
+instructions]]). Then, refresh the local package list and install
+~cern-ldap~.
 
 #+begin_example
   M-x package-refresh-contents RET
@@ -54,9 +56,7 @@ local package list and install ~cern-ldap~.
 ** With ~use-package~
 *** From MELPA
 
-The latest version (current ~master~) of this software can be
-installed directly from [[https://melpa.org/#/cern-ldap][MELPA]]. The following snippet assumes that
-MELPA has already been configured and initialised ([[https://melpa.org/#/getting-started][instructions]]).
+See above for instructions on how to setup MELPA first.
 
 #+begin_src emacs-lisp
   (use-package cern-ldap
