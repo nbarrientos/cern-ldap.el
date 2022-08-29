@@ -25,6 +25,17 @@ The source code is available in Sourcehut and automatically mirrored to Github f
 -   **Github (mirror):** <https://github.com/nbarrientos/cern-ldap.el>
 
 
+## Manual installation
+
+
+### From MELPA
+
+Firstly, configure MELPA ([upstream instructions](https://melpa.org/#/getting-started)). Then, refresh the local package list and install `cern-ldap`.
+
+    M-x package-refresh-contents RET
+    M-x package-install RET cern-ldap RET
+
+
 ## With `use-package`
 
 
