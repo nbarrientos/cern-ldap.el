@@ -4,8 +4,7 @@
 #+language: en
 #+options: ':t toc:nil author:t email:t title:t
 
-#+CAPTION: MELPA
-[[https://melpa.org/#/cern-ldap][file:https://melpa.org/packages/cern-ldap-badge.svg]]
+[[https://melpa.org/#/cern-ldap][file:https://melpa.org/packages/cern-ldap-badge.svg]] [[https://stable.melpa.org/#/cern-ldap][file:https://stable.melpa.org/packages/cern-ldap-badge.svg]]
 
 The aim of this package is to provide a set of functions to interact
 with CERN's LDAP servers, allowing to lookup users by login and full

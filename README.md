@@ -1,4 +1,4 @@
-[![img](https://melpa.org/packages/cern-ldap-badge.svg "MELPA")](https://melpa.org/#/cern-ldap)
+[![img](https://melpa.org/packages/cern-ldap-badge.svg)](https://melpa.org/#/cern-ldap) [![img](https://stable.melpa.org/packages/cern-ldap-badge.svg)](https://stable.melpa.org/#/cern-ldap)
 
 The aim of this package is to provide a set of functions to interact with CERN&rsquo;s LDAP servers, allowing to lookup users by login and full name and the membership of user groups. The output is normally displayed in read-only buffers. Below you can find a list of variables that can be customised and also the commands that this package provides. It&rsquo;s recommended though to read the documentation of each variable and function as this document typically contains only summaries and brief explanations.
 
