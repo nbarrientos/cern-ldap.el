@@ -171,13 +171,15 @@ value of the variable `cern-ldap-user-full-name-matching-type'.
 See `cern-ldap-user-by-login-dwim' for instructions on how to control
 how the results are displayed/filtered using ARG."
   (interactive "P\nsFull name: ")
-  (cern-ldap--lookup-user
-   arg
-   (cond
-    ((eq cern-ldap-user-full-name-matching-type 'relaxed)
-     (concat cern-ldap-user-lookup-full-name-key "=*" full-name "*"))
-    ((eq cern-ldap-user-full-name-matching-type 'strict)
-     (concat cern-ldap-user-lookup-full-name-key "=" full-name)))))
+  (let ((search-value
+         (cond
+          ((eq cern-ldap-user-full-name-matching-type 'relaxed)
+           (format "*%s*" full-name))
+          ((eq cern-ldap-user-full-name-matching-type 'strict)
+           full-name))))
+    (cern-ldap--lookup-user
+     arg
+     (concat cern-ldap-user-lookup-full-name-key "=" search-value))))
 
 ;;;###autoload
 (defun cern-ldap-group-dwim (arg)
