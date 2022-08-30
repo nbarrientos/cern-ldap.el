@@ -214,8 +214,7 @@ automatically lookup information about that username."
                      (?l . ,group))))
         (members (cern-ldap--expand-group group (not arg))))
     (if members
-        (with-temp-buffer-window
-            buffer-n
+        (with-temp-buffer-window buffer-n
             #'display-buffer-reuse-window
             nil
           (with-current-buffer buffer-n
@@ -256,8 +255,7 @@ automatically lookup information about that username."
                  attributes
                  cern-ldap--user-base-dn))))
     (if data
-        (with-temp-buffer-window
-            buffer-n
+        (with-temp-buffer-window buffer-n
             #'display-buffer-reuse-window
             nil
           (and (< 1 (length data))
