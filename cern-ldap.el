@@ -218,13 +218,14 @@ automatically lookup information about that username."
             buffer-n
             #'display-buffer-reuse-window
             nil
-          (dolist (member members)
-            (princ (format "%s\n" member)))
-          (with-current-buffer
-              buffer-n
-            (local-set-key (kbd "q") 'kill-this-buffer)
-            (local-set-key (kbd "C-<return>") 'cern-ldap-user-by-login-dwim)
-            (sort-lines nil (point-min) (point-max))))
+            (with-current-buffer buffer-n
+              (mapc (lambda (member)
+                      (insert member)
+                      (newline))
+                    members)
+              (local-set-key (kbd "q") 'kill-this-buffer)
+              (local-set-key (kbd "C-<return>") 'cern-ldap-user-by-login-dwim)
+              (sort-lines nil (point-min) (point-max))))
       (user-error "%s is an empty or unknown group" group))))
 
 (defun cern-ldap--lookup-user (arg filter)
