@@ -67,6 +67,24 @@ Example installation with `use-package` using a local copy:
 Don&rsquo;t forget to clone the source code into the load path specified above (or any other of your choice).
 
 
+## Doom Emacs
+
+1.  Add the following to `~.doom.d/packages.el`:
+
+```emacs-lisp
+(package! cern-ldap)
+```
+
+1.  Include your customisations in `.doom.d/config.el`, for example:
+
+```emacs-lisp
+(use-package! cern-ldap
+  :custom
+  (cern-ldap-buffer-name-format "*LDAP (%t) %l*")
+  (cern-ldap-user-full-name-matching-type 'strict))
+```
+
+
 # Contributing
 
 Send patches and/or comments to the [mailing list](https://lists.sr.ht/~nbarrientos/cern-ldap.el).
