@@ -82,13 +82,13 @@ above (or any other of your choice).
 
 ** Doom Emacs
 
-1. Add the following to ~~/.doom.d/packages.el~:
+- Add the following to ~~/.doom.d/packages.el~:
 
 #+begin_src emacs-lisp
   (package! cern-ldap)
 #+end_src
 
-2. Include your customisations in ~~/.doom.d/config.el~, for example:
+- Include your customisations in ~~/.doom.d/config.el~, for example:
 
 #+begin_src emacs-lisp
   (use-package! cern-ldap
