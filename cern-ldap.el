@@ -172,11 +172,10 @@ See `cern-ldap-user-by-login-dwim' for instructions on how to control
 how the results are displayed/filtered using ARG."
   (interactive "P\nsFull name: ")
   (let ((search-value
-         (cond
-          ((eq cern-ldap-user-full-name-matching-type 'relaxed)
-           (format "*%s*" full-name))
-          ((eq cern-ldap-user-full-name-matching-type 'strict)
-           full-name))))
+         (pcase cern-ldap-user-full-name-matching-type
+           ('relaxed (format "*%s*" full-name))
+           ('strict full-name)
+           (_ (user-error "Invalid full name matching type")))))
     (cern-ldap--lookup-user
      arg
      (concat cern-ldap-user-lookup-full-name-key "=" search-value))))
