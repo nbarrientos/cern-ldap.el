@@ -96,6 +96,7 @@ The package allows the user to customise the behaviour of the code in several wa
 
 -   `cern-ldap-server-url`
 -   `cern-ldap-buffer-name-format`
+-   `cern-ldap-finish-hook`
 -   `cern-ldap-user-lookup-login-key`
 -   `cern-ldap-user-lookup-full-name-key`
 -   `cern-ldap-user-full-name-matching-type`

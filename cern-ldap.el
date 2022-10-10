@@ -54,6 +54,11 @@ and %l the corresponding search string."
   :group 'cern-ldap
   :type 'string)
 
+(defcustom cern-ldap-finish-hook nil
+  "Hook run after the results buffer is prepared."
+  :group 'cern-ldap
+  :type 'hook)
+
 (defcustom cern-ldap-user-lookup-login-key "sAMAccountName"
   "Field to search in when looking up user accounts by login.
 
@@ -223,7 +228,8 @@ automatically lookup information about that username."
                   members)
             (local-set-key (kbd "q") 'kill-this-buffer)
             (local-set-key (kbd "C-<return>") 'cern-ldap-user-by-login-dwim)
-            (sort-lines nil (point-min) (point-max))))
+            (sort-lines nil (point-min) (point-max))
+            (run-hooks 'cern-ldap-finish-hook)))
       (user-error "%s is an empty or unknown group" group))))
 
 (defun cern-ldap--lookup-user (arg filter)
@@ -275,7 +281,8 @@ automatically lookup information about that username."
             (goto-char (point-min))
             (conf-mode)
             (local-set-key (kbd "C-<return>") 'cern-ldap-user-by-login-dwim)
-            (local-set-key (kbd "q") 'kill-this-buffer)))
+            (local-set-key (kbd "q") 'kill-this-buffer)
+            (run-hooks 'cern-ldap-finish-hook)))
       (user-error "No user accounts found"))))
 
 (defun cern-ldap--expand-group (group &optional recurse)
