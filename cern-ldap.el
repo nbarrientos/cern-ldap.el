@@ -185,6 +185,28 @@ how the results are displayed/filtered using ARG."
      arg
      (concat cern-ldap-user-lookup-full-name-key "=" search-value))))
 
+(defun cern-ldap-users-single-attribute (accounts attribute)
+  "Return the values of ATTRIBUTE for all ACCOUNTS.
+
+The elements of ACCOUNTS will be searched for using
+`cern-ldap-user-lookup-full-name-key'.
+
+This function is useful for instance to obtain the break-down of
+organisational units for a list of accounts, for example:
+
+\(seq-sort-by #'cdr
+              #'>
+              (-frequencies
+               (cern-ldap-users-single-attribute
+                '(\"user1\" \"user2\")
+                \"department\")))"
+  (mapcar (lambda (login)
+            (cadr (flatten-list
+                   (cern-ldap--lookup-user
+                    (concat cern-ldap-user-lookup-login-key "=" login)
+                    (list attribute)))))
+          accounts))
+
 ;;;###autoload
 (defun cern-ldap-group-dwim (arg)
   "Expand the group which is in the active region or the word at point.
