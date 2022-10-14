@@ -162,7 +162,7 @@ how the results are displayed/filtered using ARG."
 See `cern-ldap-user-by-login-dwim' for instructions on how to control
 how the results are displayed/filtered using ARG."
   (interactive "P\nsLogin: ")
-  (cern-ldap--lookup-user
+  (cern-ldap--display-user
    arg
    (concat cern-ldap-user-lookup-login-key "=" login)))
 
@@ -181,7 +181,7 @@ how the results are displayed/filtered using ARG."
            ('relaxed (format "*%s*" full-name))
            ('strict full-name)
            (_ (user-error "Invalid full name matching type")))))
-    (cern-ldap--lookup-user
+    (cern-ldap--display-user
      arg
      (concat cern-ldap-user-lookup-full-name-key "=" search-value))))
 
@@ -232,7 +232,20 @@ automatically lookup information about that username."
             (run-hooks 'cern-ldap-finish-hook)))
       (user-error "%s is an empty or unknown group" group))))
 
-(defun cern-ldap--lookup-user (arg filter)
+(defun cern-ldap--lookup-user (filter attributes)
+  "Return the value of some ATTRIBUTES for users matching FILTER.
+
+The results are sorted alphabetically by `cern-ldap-user-sort-key'."
+  (seq-sort-by
+   (lambda (e)
+     (cadr (assoc cern-ldap-user-sort-key e)))
+   #'string<
+   (cern-ldap--query
+    filter
+    attributes
+    cern-ldap--user-base-dn)))
+
+(defun cern-ldap--display-user (arg filter)
   "Lookup users in LDAP returning some attributes in a new buffer.
 
 The results will be delivered in a temporary read-only buffer
@@ -251,14 +264,7 @@ automatically lookup information about that username."
                       (?l . ,(car (last (split-string filter "=")))))))
          (attributes (unless arg
                        cern-ldap-user-displayed-attributes))
-         (data (seq-sort-by
-                (lambda (e)
-                  (cadr (assoc cern-ldap-user-sort-key e)))
-                #'string<
-                (cern-ldap--query
-                 filter
-                 attributes
-                 cern-ldap--user-base-dn))))
+         (data (cern-ldap--lookup-user filter attributes)))
     (if data
         (with-temp-buffer-window buffer-n
             #'display-buffer-reuse-window
