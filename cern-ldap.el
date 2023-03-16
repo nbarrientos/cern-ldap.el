@@ -46,7 +46,7 @@ to change the value of this variable."
   :group 'cern-ldap
   :type 'string)
 
-(defcustom cern-ldap-buffer-name-format "*CERN LDAP %t %l*"
+(defcustom cern-ldap-buffer-name-format "*CERN LDAP %t (%l)*"
   "Format for the buffer names that display results.
 
 %t represents the type of lookup, namely \"user\" or \"group\"
@@ -302,7 +302,7 @@ automatically lookup information about that username."
   (let* ((buffer-n (format-spec
                     cern-ldap-buffer-name-format
                     `((?t . "user")
-                      (?l . ,(car (last (split-string filter "=")))))))
+                      (?l . ,filter))))
          (attributes (unless arg
                        cern-ldap-user-displayed-attributes))
          (data (cern-ldap--lookup-user filter attributes)))
