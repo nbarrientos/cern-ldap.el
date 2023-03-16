@@ -59,6 +59,14 @@ and %l the corresponding search string."
   :group 'cern-ldap
   :type 'hook)
 
+(defcustom cern-ldap-user-lookup-location-key "physicalDeliveryOfficeName"
+  "Field to search in when looking up user accounts by location.
+
+The value of this variable will be used as search field at the
+time of querying LDAP when calling `cern-ldap-user-by-location'"
+  :group 'cern-ldap
+  :type 'string)
+
 (defcustom cern-ldap-user-lookup-login-key "sAMAccountName"
   "Field to search in when looking up user accounts by login.
 
@@ -165,6 +173,17 @@ how the results are displayed/filtered using ARG."
   (cern-ldap--display-user
    arg
    (concat cern-ldap-user-lookup-login-key "=" login)))
+
+(defun cern-ldap-user-by-location (arg building floor room)
+  "Look-up user accounts with physical location BUILDING/FLOOR-ROOM in LDAP.
+
+See `cern-ldap-user-by-login-dwim' for instructions on how to
+control how the results are displayed/filtered using ARG."
+  (interactive "P\nnBuilding: \nnFloor: \nnRoom: ")
+  (let ((location (format "%d %d-%03d" building floor room)))
+    (cern-ldap--display-user
+     arg
+     (concat cern-ldap-user-lookup-location-key "=" location))))
 
 ;;;###autoload
 (defun cern-ldap-user-by-full-name (arg full-name)

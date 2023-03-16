@@ -97,6 +97,7 @@ The package allows the user to customise the behaviour of the code in several wa
 -   `cern-ldap-server-url`
 -   `cern-ldap-buffer-name-format`
 -   `cern-ldap-finish-hook`
+-   `cern-ldap-user-lookup-location-key`
 -   `cern-ldap-user-lookup-login-key`
 -   `cern-ldap-user-lookup-full-name-key`
 -   `cern-ldap-user-full-name-matching-type`
@@ -114,6 +115,7 @@ For more information just run `M-x customize-group cern-ldap` or read the docume
 
 These commands will always prompt for user input using the minibuffer.
 
+-   **`cern-ldap-user-by-location`:** Lookup a user (or several) by physical location. With prefix argument, return more information.
 -   **`cern-ldap-user-by-login`:** Lookup a user by login. With prefix argument, return more information.
 -   **`cern-ldap-user-by-full-name`:** Lookup a user (or several) by full name. The search query is enclosed in `*` by default, making the search query more greedy (see `cern-ldap-user-full-name-matching-type`).
 -   **`cern-ldap-group`:** Lookup the members of a group by name. With prefix argument, do it non-recursive.
