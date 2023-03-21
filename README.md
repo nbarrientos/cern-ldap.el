@@ -115,7 +115,7 @@ For more information just run `M-x customize-group cern-ldap` or read the docume
 
 These commands will always prompt for user input using the minibuffer.
 
--   **`cern-ldap-user-by-location`:** Lookup a user (or several) by physical location. With prefix argument, return more information.
+-   **`cern-ldap-user-by-location`:** Lookup a user (or several) by physical location. With prefix argument, return more information. Only primary accounts will be listed.
 -   **`cern-ldap-user-by-login`:** Lookup a user by login. With prefix argument, return more information.
 -   **`cern-ldap-user-by-full-name`:** Lookup a user (or several) by full name. The search query is enclosed in `*` by default, making the search query more greedy (see `cern-ldap-user-full-name-matching-type`).
 -   **`cern-ldap-group`:** Lookup the members of a group by name. With prefix argument, do it non-recursive.

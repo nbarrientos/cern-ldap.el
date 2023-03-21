@@ -127,6 +127,7 @@ These commands will always prompt for user input using the minibuffer.
 
 - ~cern-ldap-user-by-location~ :: Lookup a user (or several) by
   physical location. With prefix argument, return more information.
+  Only primary accounts will be listed.
 - ~cern-ldap-user-by-login~ :: Lookup a user by login. With prefix
   argument, return more information.
 - ~cern-ldap-user-by-full-name~ :: Lookup a user (or several) by full
