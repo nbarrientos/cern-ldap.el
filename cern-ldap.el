@@ -37,6 +37,11 @@
 (require 'subword)
 (require 'thingatpt)
 
+(defgroup cern-ldap nil
+  "Interacting with CERN's LDAP servers from Emacs."
+  :link '(url-link "https://git.sr.ht/~nbarrientos/cern-ldap.el")
+  :group 'net-utils)
+
 (defcustom cern-ldap-server-url "ldap://xldap.cern.ch:389"
   "URL pointing to the LDAP instance to query.
 
