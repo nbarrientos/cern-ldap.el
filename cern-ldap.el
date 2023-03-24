@@ -175,7 +175,7 @@ control how the results are displayed/filtered using ARG."
                                (line-beginning-position) (line-end-position)))))
              (match (string-match
                      (format
-                      "\\(?:%s:\\)?\\([0-9]+\\) \\([0-9]+\\)-\\([0-9]+\\)"
+                      "^\\(?:%s:\\)?\\([0-9]+\\) \\([0-9]+\\)-\\([0-9]+\\)"
                       cern-ldap-user-lookup-location-key)
                      location))
              (building (string-to-number (match-string 1 location)))
