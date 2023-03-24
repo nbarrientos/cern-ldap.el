@@ -125,9 +125,10 @@ Please refer to the built-in help of each function for further information.
 
 ## With implicit input
 
-The following commands fish the required input from the current buffer, either from the active region or from the word at point. The word is collected with `superword-mode` enabled so for instance groups with dashes are picked up.
+The following commands fish the required input from the current buffer, either from the active region or from the word/line at point. The word is collected with `superword-mode` enabled so for instance groups with dashes are picked up.
 
 -   `cern-ldap-user-by-login-dwim`
+-   `cern-ldap-user-by-location-dwim`
 -   `cern-ldap-user-by-full-name-dwim`
 -   `cern-ldap-group-dwim`
 

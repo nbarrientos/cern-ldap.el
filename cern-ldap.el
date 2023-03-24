@@ -157,6 +157,33 @@ by the regular expression defined in
     (cern-ldap-user-by-login arg login)))
 
 ;;;###autoload
+(defun cern-ldap-user-by-location-dwim (arg)
+  "Look-up primary accounts by location in the active region and more.
+
+If the region is not active and point is at the beginning of a
+line starting with `cern-ldap-user-lookup-location-key' then extract the
+location from the value of the field.
+
+See `cern-ldap-user-by-login-dwim' for instructions on how to
+control how the results are displayed/filtered using ARG."
+  (interactive "P")
+  (and-let* ((location (cond ((use-region-p)
+                              (buffer-substring-no-properties
+                               (region-beginning) (region-end)))
+                             ((looking-at cern-ldap-user-lookup-location-key)
+                              (buffer-substring-no-properties
+                               (line-beginning-position) (line-end-position)))))
+             (match (string-match
+                     (format
+                      "\\(?:%s:\\)?\\([0-9]+\\) \\([0-9]+\\)-\\([0-9]+\\)"
+                      cern-ldap-user-lookup-location-key)
+                     location))
+             (building (string-to-number (match-string 1 location)))
+             (floor (string-to-number (match-string 2 location)))
+             (room (string-to-number (match-string 3 location))))
+    (cern-ldap-user-by-location arg building floor room)))
+
+;;;###autoload
 (defun cern-ldap-user-by-full-name-dwim (arg)
   "Look-up account by full name in the active region.
 
