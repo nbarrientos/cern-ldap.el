@@ -153,6 +153,9 @@ It might be a good idea to pack these commands in a [transient](https://github.c
    ["LDAP user (by full name)"
     ("F" "Dwim" cern-ldap-user-by-full-name-dwim)
     ("f" "Ask" cern-ldap-user-by-full-name)]
+   ["LDAP user (by location)"
+    ("L" "Dwim" cern-ldap-user-by-location-dwim)
+    ("l" "Ask" cern-ldap-user-by-location)]
    ["LDAP group"
     ("G" "Dwim" cern-ldap-group-dwim)
     ("g" "Ask" cern-ldap-group)]])
