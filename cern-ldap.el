@@ -179,6 +179,7 @@ how the results are displayed/filtered using ARG."
    arg
    (concat cern-ldap-user-lookup-login-key "=" login)))
 
+;;;###autoload
 (defun cern-ldap-user-by-location (arg building floor room)
   "Look-up primary user accounts in a given physical location in LDAP.
 
