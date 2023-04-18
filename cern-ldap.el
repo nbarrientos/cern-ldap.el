@@ -177,9 +177,10 @@ control how the results are displayed/filtered using ARG."
                      (buffer-substring-no-properties
                       (line-beginning-position) (line-end-position)))))
              (match
-              (string-match "\\([0-9]+\\) \\([0-9]+\\)-\\([0-9]+\\)$" location))
+              (string-match "\\([0-9]+\\) \\(R\\|T\\|E\\|S\\|S2\\|S3\\|[1-9]\\)-\\([0-9]+\\)$"
+                            location))
              (building (string-to-number (match-string 1 location)))
-             (floor (string-to-number (match-string 2 location)))
+             (floor (match-string 2 location))
              (room (string-to-number (match-string 3 location))))
     (cern-ldap-user-by-location arg building floor room)))
 
@@ -216,7 +217,7 @@ arguments of the function in the form BUILDING/FLOOR-ROOM.
 See `cern-ldap-user-by-login-dwim' for instructions on how to
 control how the results are displayed/filtered using ARG."
   (interactive "P\nnBuilding: \nnFloor: \nnRoom: ")
-  (let ((location (format "%d %d-%03d" building floor room)))
+  (let ((location (format "%d %s-%03d" building floor room)))
     (cern-ldap--display-user
      arg
      (format "(&(%s)(%s))"
