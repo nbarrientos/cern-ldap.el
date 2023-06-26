@@ -252,11 +252,11 @@ The elements of ACCOUNTS will be searched for using
 This function is useful for instance to obtain the break-down of
 organisational units for a list of accounts, for example:
 
-\(seq-sort-by #'cdr
-              #'>
+\(seq-sort-by #\\='cdr
+              #\\='>
               (-frequencies
                (cern-ldap-users-single-attribute
-                '(\"user1\" \"user2\")
+                \\='(\"user1\" \"user2\")
                 \"department\")))"
   (mapcar (lambda (login)
             (cadr (flatten-list
